@@ -66,12 +66,7 @@ class OrderDataObject:
         result = self.merge_dataframes(pivot_unique,pivot_sum,self.data_constants.GROUPBY_LIST)
         final = self.rename_dataframe_columns(result,self.data_constants.GROUPBY_COLUMNS)
         return final
-
-if __name__ == "__main__":
-    x = OrderDataObject()
-    x.handle()
-    
-    
+   
     
     
 
