@@ -2,7 +2,7 @@
 This app was built with python 3.7.4 
 Install requirements with
 ```
-git clone www.github.com/lemode/sample
+git clone https://github.com/lemode/sample
 ```
 
 Open cloned sample and run the following commands
