@@ -8,21 +8,7 @@ git clone www.github.com/lemode/sample
 Open cloned sample and run the following commands
 ```
 python -m venv .venv
-```
-
-Activate the virtual environment
-**Linux**
-```
-source .venv/bin/activate
-```
-
-**Windows**
-```
-.venv\Scripts\Activate.ps1 or .venv\Scripts\activate.bat
-```
-
-Install requirements for repo
-```
+.venv\Scripts\activate
 python -m pip install -r requirements.txt
 ```
 
