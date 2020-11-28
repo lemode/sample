@@ -12,16 +12,15 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-## Run
+## Run and Test Points
 To run data and application using `main.py` and the following command.
 Data will print for simplicity of review
 ```
-python main.py
+python points\main.py
 ```
 
-## Tests
 Tests can be run from the command line using the following commands
 ```
-python -m unittest tests/test_order.py
+python -m unittest points\tests/test_order.py
 ```
 ---- 
