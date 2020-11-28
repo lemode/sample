@@ -2,9 +2,9 @@
 import pandas as pd
 
 from unittest import TestCase, mock
-from src.order import OrderDataObject
-from src.constants import OrderConfig
-from tests.data import TestOrderConfig
+from points.src.order import OrderDataObject
+from points.src.constants import OrderConfig
+from points.tests.constants import TestOrderConfig
 
 class TestOrderDataObject(TestCase):
     '''

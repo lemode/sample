@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.order import OrderDataObject
+from points.src.order import OrderDataObject
 
 x = OrderDataObject()
 result = x.handle()

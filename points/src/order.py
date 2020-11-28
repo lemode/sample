@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.constants import OrderConfig
+from points.src.constants import OrderConfig
 
 class OrderDataObject:
     '''
