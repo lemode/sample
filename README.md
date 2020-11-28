@@ -12,7 +12,7 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-## Run and Test Points
+### Run and Test Points
 To run data and application using `main.py` and the following command.
 Data will print for simplicity of review
 ```
