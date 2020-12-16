@@ -1,0 +1,2 @@
+powershell.exe jupyter notebook --no-browser --allow-root --NotebookApp.allow_origin='https://colab.research.google.com' --NotebookApp.token=''  --NotebookApp.disable_check_xsrf=True --notebook-dir='G:\Shared drives\Fin Fin Systems Shared\Python Files\bookkeeper'
+:: Google drive on wrong network alphabet powershell.exe jupyter notebook --no-browser --allow-root --NotebookApp.allow_origin='https://colab.research.google.com' --NotebookApp.token=''  --NotebookApp.disable_check_xsrf=True --notebook-dir='E:\Shared drives\Fin Fin Systems Shared\Python Files\bookkeeper'
