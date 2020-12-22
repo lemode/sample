@@ -1,3 +1,6 @@
+secrets.*
+
+# Visual Studio code objects
 .venv
 .vscode
 __pycache__/

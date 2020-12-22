@@ -12,6 +12,18 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
+## Credentials
+Create file called `secrets.py` placed in root folder with classes of credentials and its environment
+
+```
+class database_environment:
+    DB_DATABASE = "XXXXX"
+    DB_USER = "XXXXX"
+    DB_PASSWORD = "XXXXX"
+    DB_HOST = "XXXXX"
+    DB_PORT = "XXXXX"
+```
+
 ## Run
 To run data and application using `main.py` and the following command.
 Data will print for simplicity of review
@@ -25,3 +37,4 @@ Tests can be run from the command line using the following commands
 python -m unittest tests/test_order.py
 ```
 ---- 
+
