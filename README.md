@@ -16,7 +16,7 @@ python -m pip install -r requirements.txt
 Create file called `secrets.py` placed in root folder with classes of credentials and its environment
 
 ```
-class database_environment:
+class DatabaseEnvironmentConfig:
     DB_DATABASE = "XXXXX"
     DB_USER = "XXXXX"
     DB_PASSWORD = "XXXXX"
@@ -24,17 +24,16 @@ class database_environment:
     DB_PORT = "XXXXX"
 ```
 
-## Run
+### Run and Test Points
 To run data and application using `main.py` and the following command.
 Data will print for simplicity of review
 ```
-python main.py
+python points\main.py
 ```
 
-## Tests
 Tests can be run from the command line using the following commands
 ```
-python -m unittest tests/test_order.py
+python -m unittest points\tests/test_order.py
 ```
 ---- 
 
