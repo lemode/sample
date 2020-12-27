@@ -1,3 +1,4 @@
 black==20.8b1
+boto3==1.10.27
 pandas==0.25.3
 streamlit-nightly==0.71.1.dev20201114

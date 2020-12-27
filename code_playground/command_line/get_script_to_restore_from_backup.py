@@ -1,7 +1,9 @@
 import pandas as pd
 
 from code_playground.secrets import DatabaseProductionConfig as database_production
-from code_playground.command_line.constants import RestoreFromBackupTemplateConfig as constants
+from code_playground.command_line.constants import (
+    RestoreFromBackupTemplateConfig as constants,
+)
 
 """
 Purpose:
@@ -27,10 +29,10 @@ class ScriptToRestoreFromBackupCommandObject:
         username=database_production.DB_USER,
         password=database_production.DB_PASSWORD,
     ):
-        self.server=server
-        self.port=port
-        self.username=username
-        self.password=password
+        self.server = server
+        self.port = port
+        self.username = username
+        self.password = password
 
     def generate_filename(self, table_group):
         return constants.RESTORE_SCRIPT_FILENAME[table_group]
