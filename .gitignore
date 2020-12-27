@@ -1,6 +1,16 @@
 secrets.*
 
-# Visual Studio code objects
-.venv
-.vscode
+# Byte-compiled / optimized / DLL files
 __pycache__/
+
+# Editor dotfiles
+.vscode/
+
+# raw data files
+.csv
+downloads/
+
+# virtualenv
+.venv
+venv/
+ENV/
