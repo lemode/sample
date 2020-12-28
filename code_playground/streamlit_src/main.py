@@ -1,15 +1,14 @@
 import streamlit as st
 
-import code_playground
-import code_playground.streamlit_src.webpage as webpage
+import webpage
 
-import code_playground.streamlit_src.app_home
-import code_playground.streamlit_src.cheat_sheet
+import app_home
+import cheat_sheet
 
 
 PAGES = {
-    "Home": code_playground.streamlit_src.app_home,
-    "Quick Commands": code_playground.streamlit_src.cheat_sheet,
+    "Home": app_home,
+    "Quick Commands": cheat_sheet,
 
 }
 
