@@ -10,11 +10,9 @@ def write():
         webpage.webpage_title("")
         st.write(
             """
-             #### The Magic of the Quick Commands
+            #### The Magic of the Quick Commands
             ---
-            This application's **purpose** is to provide:
-            - a **Cheat Sheet** of quick commands that have been amazed from different places.
-            - Easily recall common commands for coding, shipping and owning a pipeline
-            
+            This application's **purpose** is to:
+            - Easily recall **quick commands** for coding, shipping and owning a pipeline
             """
         )
