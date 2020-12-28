@@ -24,16 +24,19 @@ class DatabaseEnvironmentConfig:
     DB_PORT = "XXXXX"
 ```
 
-### Run and Test Points
-To run data and application using `main.py` and the following command.
-Data will print for simplicity of review
-```
-python points\main.py
-```
+## Run App
 
-Tests can be run from the command line using the following commands
-```
-python -m unittest points\tests/test_order.py
-```
----- 
+To run and load application perform the following:  
+**Run** `app.bat` or in root folder and run `streamlit run app.py`
+
+
+### Run and test folder applications
+To run data and application use the below command. Data will print for simplicity of review. Tests can be run from the command line
+
+
+**Points Application** `python code_playground\points\main.py`  
+**Points Tests** `python -m unittest code_playground\points\tests\test_order.py`  
+
+**Streamlit Application** `streamlit run code_playground\streamlit_src\main.py`  
+
 
