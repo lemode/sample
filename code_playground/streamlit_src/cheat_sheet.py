@@ -7,13 +7,16 @@ def write():
 
     col1.subheader("Streamlit")
     col1.markdown(
-        "[Streamlit Cheat Sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)"
+        "> [Streamlit Cheat Sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)"
     )
 
     col1.subheader("Command Line")
     col1.markdown(
         """
-        > **Move to directory** `cd <folder name/partial folder name*>`  
+        > **Move down directory** `cd <folder name/partial folder name*>`  
+        > **Move up directory** `cd ..`  
+        > **View files and folders in directory** `ls`  
+        > **Get current directory** `cd "%~dp0"`  
         """
     )
 

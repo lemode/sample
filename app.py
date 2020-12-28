@@ -9,7 +9,7 @@ import code_playground.streamlit_src.cheat_sheet
 
 PAGES = {
     "Home": code_playground.streamlit_src.app_home,
-    "Cheat Sheet": code_playground.streamlit_src.cheat_sheet,
+    "Quick Commands": code_playground.streamlit_src.cheat_sheet,
 
 }
 
