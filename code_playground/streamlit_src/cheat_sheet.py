@@ -20,13 +20,21 @@ def write():
         """
     )
 
-    col1.subheader("Python Environment Setup")
-    col1.markdown(
+    col2.subheader("Python Environment Setup")
+    col2.markdown(
         """
         > **Create virtual environment** `python -m venv .venv`  
         > **Activate virtual environment** `.venv\\Scripts\\activate`  
         > **Install requirements** `python -m pip install -r requirements.txt`  
         > **Deactivate environment** `deactivate`  
         > **Remove virtual environment** `rm -r .venv`  
+    """
+    )
+
+    col2.subheader("Docker")
+    col2.markdown(
+        """
+        > **Create folder directory** `<folder directorybuild\html>`  
+        > **Build an image from a Dockerfile** `docker build . -t <name:tag>`  
     """
     )
