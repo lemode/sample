@@ -10,6 +10,30 @@ def write():
         "> [Streamlit Cheat Sheet](https://share.streamlit.io/daniellewisdl/streamlit-cheat-sheet/app.py)"
     )
 
+    col1.subheader("VS Code")
+    col1.markdown(
+        """
+        > **Open/close side bar** `Ctrl+ b`
+        > **Go to specific line** `Ctrl + g`
+        > **Duplicate line** `Ctrl + Shift + d`
+        > **Create ipython cell** `# %%`
+        > **Clear terminal** `Ctrl + l`
+        """
+    )
+    col1.markdown(
+        "> [VS Code](https://medium.com/better-programming/20-vs-code-shortcuts-for-fast-coding-cheatsheet-10b0e72fd5d)"
+    )
+
+    col1.subheader("ipython")
+    col1.markdown(
+        """
+        > **Clear variable with no user confirmation** `%reset -f>`  
+        """
+    )
+    col1.markdown(
+        "> [ipython](https://www.delftstack.com/howto/python/how-to-clear-variables-in-ipython/)"
+    )
+
     col1.subheader("Command Line")
     col1.markdown(
         """
