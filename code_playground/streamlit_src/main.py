@@ -9,8 +9,8 @@ import cheat_sheet
 PAGES = {
     "Home": app_home,
     "Quick Commands": cheat_sheet,
-
 }
+
 
 def main():
     """Main function of the App"""
@@ -36,6 +36,7 @@ def main():
     page = PAGES[selection]
     with st.spinner(f"Loading {selection} ..."):
         webpage.write_page(page)
+
 
 if __name__ == "__main__":
     main()
