@@ -119,3 +119,63 @@ def horizontal_ruler(in_sidebar: bool = False):
         return st.sidebar.markdown("---")
 
     return st.markdown("---")
+
+
+def color(outcome_value):
+    if outcome_value == constants.PASS_OUTCOME:
+        color = "green"
+    elif outcome_value == constants.FAIL_OUTCOME:
+        color = "red"
+    return "background-color: %s" % color
+
+
+def generate_final_report(
+    df1,
+    df1_name=None,
+    df2=None,
+    df2_name=None,
+    df3=None,
+    df3_name=None,
+    df4=None,
+    df4_name=None,
+):
+
+    output = io.BytesIO()
+
+    # send data to excel
+    writer = pd.ExcelWriter(output, engine="xlsxwriter")
+
+    # pivot summary tab
+    if df1:
+        df1.to_excel(writer, sheet_name=df1_name, encoding="utf-8", index=False)
+
+    # payables tab
+    if df2:
+        df2.to_excel(writer, sheet_name=df2_name, encoding="utf-8", index=False)
+
+    # interco tab
+    if df3:
+        df3.to_excel(writer, sheet_name=df3_name, encoding="utf-8", index=False)
+
+    # exchange rate tab
+    if df4:
+        df4.to_excel(writer, sheet_name=df4_name, encoding="utf-8", index=False)
+
+    writer.save()
+    processed_data = output.getvalue()
+    return processed_data
+
+
+def get_table_download_link(byte_value, output_file):
+    """
+    Generates a link allowing the data in a given panda dataframe to be downloaded
+
+    Arguements
+    ---------
+        byte_value : convert an .xlsx or any file to bytes encoded
+        output_file_name : name of file to be downloaded
+    """
+    b64 = base64.b64encode(byte_value).decode()  # val looks like b'...'
+    return '<a href="data:application/octet-stream;base64,{b64}" download="{output_file}">Download file</a>'.format(
+        b64=b64, output_file=output_file
+    )  # decode b'abc' => abc
