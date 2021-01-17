@@ -31,7 +31,7 @@ def write():
         """
     )
     col1.markdown(
-        "> [ipython](https://www.delftstack.com/howto/python/how-to-clear-variables-in-ipython/)"
+        "> [ipython](https://ipython.readthedocs.io/en/stable/interactive/magics.html)"
     )
 
     col1.subheader("Command Line")
@@ -40,7 +40,9 @@ def write():
         > **Move down directory** `cd <folder name/partial folder name*>`  
         > **Move up directory** `cd ..`  
         > **View files and folders in directory** `ls`  
-        > **Get current directory** `cd "%~dp0"`  
+        > **Get current directory** `cd "%~dp0"` 
+        > **Get list of active ports** `netstat -ano"` 
+        > **Kill by forcefully terminating process using pid** `taskkill /<pid> /F`  
         """
     )
 
@@ -59,6 +61,8 @@ def write():
     col2.markdown(
         """
         > **Create folder directory** `<folder directorybuild\html>`  
-        > **Build an image from a Dockerfile** `docker build . -t <name:tag>`  
+        > **Build an image from a Dockerfile in a Git Hub repo** `docker build . -t <name:tag>`  
+        > **Run docker file to set up container** `docker run - p <local machine port>:<container port> <name:tag>`  
+        > **List containers using docker imaage** `docker container ls <name:tag>`  
     """
     )
