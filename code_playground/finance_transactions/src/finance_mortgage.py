@@ -34,21 +34,17 @@ class MortgageService:
 
         return list_schedule_dates
 
-    def get_start_date(self, rate_schedule):
+    def get_start_date(self):
         """
         Finds the start date of the prime rates schedule
         equivalent to when the morgage loan was created
-
-        Args:
-            list_rate_schedule : list - the dates of all the rates within the schedule for the different prime rates
         """
-        list_rate_schedule = self.get_list_of_dates_rates_changed(rate_schedule)
-        return min(list_rate_schedule)
+        return self.convert_string_to_date(constants.LOAN_DATE)
 
     def get_end_date(self, start_date, number_of_years):
         return start_date + relativedelta(years=number_of_years)
 
-    def get_date_range_schedule(self, start_date, end_date, rate_schedule):
+    def get_date_range(self, start_date, end_date, rate_schedule):
 
         # https://stackoverflow.com/questions/22696662/python-list-of-first-day-of-month-for-given-period
         date_range = pd.date_range(
@@ -72,7 +68,7 @@ class MortgageService:
         )
         list_rate_schedule = self.get_list_of_dates_rates_changed(rate_schedule)
 
-        min_date = list_rate_schedule[0].date().strftime("%Y-%m-%d")
+        min_date = min(list_rate_schedule).date().strftime("%Y-%m-%d")
         max_date = (
             list_rate_schedule[len(list_rate_schedule) - 1].date().strftime("%Y-%m-%d")
         )
@@ -94,7 +90,7 @@ class MortgageService:
                         prime_rate = rate_schedule[begin]
                         return prime_rate
 
-    def get_rates_schedule(
+    def generate_rates_schedule(
         self, date_range, rate_schedule=constants.PRIME_RATES_SCHEDULE
     ):
         """
@@ -112,22 +108,48 @@ class MortgageService:
             period_rate = self.get_period_prime_rate(period_date)
             dict.update({period_date: period_rate})
             index += 1
-        return dict
+
+        df = pd.DataFrame.from_dict(dict, orient='index').reset_index()
+        df.columns = ['date','prime_rate']
+        df['date'].astype('datetime64')
+        df['contract_rate'] = constants.PERSONAL_CONTRACT_RATE
+        df['interest_rate'] = df['prime_rate'] + df['contract_rate']
+        return df
 
 
     def handle(self):
         """
         Get mortgage amoritization schedule
         """
-        start_date = self.get_start_date(constants.PRIME_RATES_SCHEDULE)
+        start_date = self.get_start_date()
         end_date = self.get_end_date(start_date, constants.NUMBER_OF_YEARS)
-        dates = self.get_date_range_schedule(
+        dates = self.get_date_range(
             start_date, end_date, constants.PRIME_RATES_SCHEDULE
         )
-        rates = self.get_prime_rate_schedule(dates)       
+        rates = self.generate_rates_schedule(dates)       
+        return rates
 
 
 if __name__ == "__main__":
     x = MortgageService()
     result = x.handle()
 
+
+
+
+    # def get_morgage_schedule(self,loan_amount,number_of_periods,rate_schedule,tax_schedule):
+    #     """
+    #     Calculate mortgage based on amounts and schedules
+
+    #     Args:
+    #         loan_amount : int - total amount of the morgage loan
+    #         number_of_periods : int - number of periods the schedule would be applied over
+    #         rate_schedule : dict - the dates where the schedule for all the different prime rates
+    #         tax_schedule : dict - the dates and amounts for all tax schedules
+    #     """
+
+    # df = pd.DataFrame.from_dict(rate_schedule, orient='index').reset_index()
+    # df.columns = ['date','interest_rate']
+    # df['date'].astype('datetime64')
+
+    # df = pd.DataFrame(columns = ['date','interest_rate'])
