@@ -109,13 +109,12 @@ class MortgageService:
             dict.update({period_date: period_rate})
             index += 1
 
-        df = pd.DataFrame.from_dict(dict, orient='index').reset_index()
-        df.columns = ['date','prime_rate']
-        df['date'].astype('datetime64')
-        df['contract_rate'] = constants.PERSONAL_CONTRACT_RATE
-        df['interest_rate'] = df['prime_rate'] + df['contract_rate']
+        df = pd.DataFrame.from_dict(dict, orient="index").reset_index()
+        df.columns = ["date", "prime_rate"]
+        df["date"].astype("datetime64")
+        df["contract_rate"] = constants.PERSONAL_CONTRACT_RATE
+        df["interest_rate"] = df["prime_rate"] + df["contract_rate"]
         return df
-
 
     def handle(self):
         """
@@ -126,16 +125,13 @@ class MortgageService:
         dates = self.get_date_range(
             start_date, end_date, constants.PRIME_RATES_SCHEDULE
         )
-        rates = self.generate_rates_schedule(dates)       
+        rates = self.generate_rates_schedule(dates)
         return rates
 
 
 if __name__ == "__main__":
     x = MortgageService()
     result = x.handle()
-
-
-
 
     # def get_morgage_schedule(self,loan_amount,number_of_periods,rate_schedule,tax_schedule):
     #     """
