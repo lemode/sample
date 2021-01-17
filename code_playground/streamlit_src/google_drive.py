@@ -38,3 +38,39 @@ def google_drive_authenticate_and_upload(
     gfile.SetContentFile(target_filename)
 
     gfile.Upload(param={"supportsTeamDrives": True})
+
+    def google_drive_list_files(
+        parent_folder_id, team_drive_id=None, include_trash=False
+    ):
+        return drive.ListFile(
+            {
+                "corpora": "drive",
+                "driveId": team_drive_id,
+                "includeItemsFromAllDrives": "true",
+                "orderBy": "title",
+                "q": "parents={} and trashed={}".format(
+                    parent_folder_id, include_trash
+                ),
+                "supportsAllDrives": "true",
+            }
+        ).GetList()
+
+    def google_drive_delete_file(file_name):
+        file_list = drive.ListFile(
+            {
+                "corpora": "drive",
+                "driveId": "0AFwkOXlitG48Uk9PVA",
+                "includeItemsFromAllDrives": "true",
+                "orderBy": "title",
+                "q": "parents='1nB0B0fKxklHinZl-vIx6ddBOAo1WdAo7' and trashed=false",
+                "supportsAllDrives": "true",
+            }
+        ).GetList()
+
+        try:
+            for file in file_list:
+                print(file)
+                if file["title"] == "Copy of daily_fx_rates1":
+                    file.Delete()
+        except:
+            pass
