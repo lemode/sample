@@ -1,3 +1,10 @@
+/*
+Writing Postgres Functions and Stored Procedures
+http://sqlines.com/postgresql/how-to/return_result_set_from_stored_procedure
+http://sqlines.com/postgresql/stored_procedures_functions
+Add Defaults to Functions: https://stackoverflow.com/questions/39896329/how-to-write-function-for-optional-parameters-in-postgresql
+*/
+
 CREATE OR REPLACE FUNCTION unittest_data_payment_refund(
 	is_mapping_missing refcursor DEFAULT 'is_mapping_missing'
 	, is_transfer_net_zero refcursor DEFAULT 'is_transfer_net_zero'
