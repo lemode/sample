@@ -41,8 +41,24 @@ def write():
         > **Move up directory** `cd ..`  
         > **View files and folders in directory** `ls`  
         > **Get current directory** `cd "%~dp0"` 
-        > **Get list of active ports** `netstat -ano"` 
-        > **Kill by forcefully terminating process using pid** `taskkill /<pid> /F`  
+        > **Get list of active ports** `netstat -ano"`
+        > **Get list of active tasks** `tasklist`
+        > **Kill by forcefully terminating process using pid** `taskkill /PID <pid> /F`  
+        > **Keep bat file open after script runs** `pause`
+        """
+    )
+
+    col2.subheader("Powershell")
+    col2.markdown(
+        """
+        > **Keep powershell file open after script runs** `Start-Sleep -Seconds 30`  
+        """
+    )
+
+    col2.subheader("Posgres PSQL Powershell")
+    col2.markdown(
+        """
+        > **Run psql command line script** `psql -h hostname -d database_name -U user_name -p 5432 -a -q -f filepath`  
         """
     )
 

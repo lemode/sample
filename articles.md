@@ -13,4 +13,6 @@ Change postgres password: https://www.postgresqltutorial.com/postgresql-reset-pa
 Create user no password: https://www.postgresql.org/docs/8.0/sql-createuser.html 
 ```CREATE <user>; GRANT ALL PRIVILEGES ON DATABASE lemode to <user>;```
 Create psql for windows (add to environment variables): https://stackoverflow.com/questions/30401460/postgres-psql-not-recognized-as-an-internal-or-external-command 
-Run sql script using postgres: ```psql -h hostname -d database_name -U user_name -p 5432 -a -q -f filepath```
+
+
+Google App Scripts https://www.labnol.org/internet/google-apps-script-developers/32305/
