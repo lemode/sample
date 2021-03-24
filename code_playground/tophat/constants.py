@@ -6,9 +6,11 @@ class TopHatAnalyticsConfig:
     DB_DATABASE = "lemode"
     DB_SCHEMA = "sample_data"
 
-    QUERY_TEMPLATE_CREATE_VIEW = 'CREATE OR REPLACE VIEW {schema}.{view_name} AS ({query});'
+    QUERY_TEMPLATE_CREATE_VIEW = (
+        "CREATE OR REPLACE VIEW {schema}.{view_name} AS ({query});"
+    )
 
-    RENAME_TABLES_TO_DATA_DICTIONARY_QUERY = '''
+    RENAME_TABLES_TO_DATA_DICTIONARY_QUERY = """
         SELECT * INTO sample_data.course_enrollment_new FROM sample_data.transactions;
         SELECT * INTO sample_data.transactions_new FROM sample_data.course_enrollment;
         DROP TABLE transactions;
@@ -17,7 +19,7 @@ class TopHatAnalyticsConfig:
         SELECT * INTO sample_data.transactions FROM sample_data.transactions_new;
         DROP TABLE transactions_new;
         DROP TABLE course_enrollment_new;
-    '''
+    """
 
     # QUESTION #1 TOP PROFESSORS
     ANSWER_ONE_TOP_10_PROFESSOR = """
