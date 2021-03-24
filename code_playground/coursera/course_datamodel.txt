@@ -1,0 +1,78 @@
+/*
+Assumptions:
+The smallest enrollment object must be a course. You cannot enroll in only items
+Kept with notation used in assignment though I am using postgres as my local database
+
+Learners: 
+    A1. When did a user first join Coursera? 
+        + Use learner table and join_date_ts field to grab this information
+    A2. What country does a user come from?
+        + Use learner table and country field to grab this information
+Courses: 
+    B1. When did a course start? 
+      + Course start is ambiguous so added a course created date in course table to show when coursera started offering course and course enrolment date to depict when the user starts the course in the enrollment_activity table
+    B2. How many courses are currently being offered?
+      + Course table determines # of courses offered and adding field course_end_date determine if course is no longer offered and when it was deprecated
+Items: 
+    C1. What type of an item is this? 
+        + Column item_type_id added to items table with acting as foreign key to item_type table
+    C2. Number of items in a specific week?
+       + Column item_start_ts and item_complete_ts within item_activity would help with aggregating the number of started or completed items within a week and a join with enrollment_activity would help give the number of weeks it takes to complete all items
+    Additional Information
+       + Since an item is unique per course it is also unique per module so in order for the website to list courses with details on the module and course, the module_id and course_id are added to the items table
+Item Activity: 
+    D1. How many learners start a particular item in a course?
+       + Use item_activity table to group users by item and course
+
+
+Third normal form considerations
++ Addition table created for course enrollments as to not duplicate when someone enrolled in course across each item that belong to a particular course without having to use LOWEST_VALUE windows functions
++ Module order is dependant on the module so moved to items table to not duplicate the number of times the data appears in the table
+*/
+
+CREATE TABLE learners (
+user_id INTEGER,
+join_date_ts TIMESTAMP, 
+country STRING  
+);
+
+CREATE TABLE courses (
+course_id INTEGER,
+course_created_date TIMESTAMP,
+course_deleted_date TIMESTAMP
+);
+
+CREATE TABLE module ( 
+module_id INTEGER,
+module_created_date TIMESTAMP,
+module_deleted_date TIMESTAMP,
+course_id INTEGER
+);
+
+CREATE TABLE items (
+item_id STRING,
+item_created_date TIMESTAMP,
+item_deleted_date TIMESTAMP,
+item_type_id STRING,
+module_id INTEGER,
+module_order INTEGER
+);
+
+CREATE TABLE item_type (
+item_type_id STRING,
+Item_type STRING
+);
+
+CREATE TABLE enrollment_activity (
+user_id INTEGER,
+course_id INTEGER,
+course_enrollment_ts TIMESTAMP
+);
+
+CREATE TABLE item_activity (
+user_id INTEGER,
+item_id STRING,
+item_first_start_ts TIMESTAMP,
+item_first_complete_ts TIMESTAMP
+);
+

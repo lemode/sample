@@ -1,0 +1,171 @@
+/*
+
+Created course_activity table using:
++ create table SQL
+
+CREATE TABLE course_activity (
+user_id INTEGER,
+course_id VARCHAR(500),
+item_id VARCHAR(500),
+module_id VARCHAR(500),
+item_start_ts TIMESTAMP,
+item_complete_ts TIMESTAMP,
+module_order INTEGER
+);
+
++ pandas csv to dataframe and 
++ StringIO to copy dataframe to database
++ update any string 'NULL' to NULL values using NULLIF in field item_complete_ts 
+
+ PART A
+ 1. first ordered course_activity table by rules ie.csv sort order: course_id, module_order,item_start_ts, item_complete_ts
+ 2. use test case as sample to determine accurate sql query
+ 3. test other date like 2016-01-01 and 2016-12-31
+
+PART B
+ 1. double checked test case in csv
+ 2. found that I must use the course in the current period so the previous period does not have to be the same course, just any item
+ 3. use test case as sample to determine accurate sql query
+ 4. test other date like 2016-01-01 and 2016-12-31
+ 
+ PART D
+ 1. first ordered course_activity table by rules ie. csv sort order: course_id, module_order,item_start_ts, item_complete_ts
+ 2. use test cases as samples to determine accurate sql query
+ 3. confirm that output of users_with_completed_modules has listed module per user only once
+ 4. confirm that output of users_with_completed_courses has listed course per user only once
+ 
+ PART C
+ 1. first ordered course_activity table by rules ie.csv sort order
+ 2. use test case as sample to determine accurate sql query
+ 3. confirm that output of users_with_completed_modules has listed module per user only once
+ 
+ Amalgate all joins together to form final query for csv output
+ 
+ */
+
+WITH time_period AS (
+    SELECT * 
+    FROM (
+	    SELECT 
+	    (end_date - INTERVAL '13 days')::date AS previous_period_start_date
+	    , (end_date - INTERVAL '7 days')::date AS previous_period_end_date
+	    , (end_date - INTERVAL '6 days')::date AS current_period_start_date
+	    , end_date::date AS current_period_end_date
+	    , end_date::date
+	    FROM generate_series
+	    		/* set up timeseries for 2016 fiscal year */
+	            ( '2016-01-01'::timestamp 
+	            , '2016-12-31'::timestamp
+	            , '1 day'::INTERVAL) end_date
+	    ORDER BY 1
+    ) date_range
+) 
+,weekly_course_actives AS (
+SELECT 
+	end_date,course_id,count(DISTINCT user_id) weekly_actives
+FROM time_period tp
+JOIN course_activity a 
+	ON a.item_start_ts::date BETWEEN tp.current_period_start_date AND tp.current_period_end_date
+GROUP BY end_date,course_id
+)
+, users_in_previous_period AS (
+	/* user only requires an item in the previous period but it doesn't have to be from the same course */
+	SELECT 
+		DISTINCT end_date,user_id
+	FROM time_period tp
+	JOIN course_activity a 
+		ON a.item_start_ts::date BETWEEN tp.previous_period_start_date AND tp.previous_period_end_date
+)
+/* keep as a check to validate test case */
+--SELECT * FROM users_in_previous_period WHERE end_date::date = '2016-04-01'
+, weekly_course_retention AS (
+SELECT 
+	tp.end_date,course_id,count(DISTINCT a.user_id) weekly_retention
+FROM time_period tp
+JOIN course_activity a 
+	ON a.item_start_ts::date BETWEEN tp.current_period_start_date AND tp.current_period_end_date
+JOIN users_in_previous_period up 
+	ON up.end_date::date = tp.end_date 
+	AND up.user_id = a.user_id
+GROUP BY tp.end_date,a.course_id
+)
+,user_modules_completed AS (
+	SELECT *,item_complete_ts AS module_complete_ts 
+	FROM (
+	    SELECT *
+		    /* rank first by module to see if user has achieve the completion of a module */
+		    ,ROW_NUMBER() OVER (PARTITION BY user_id,course_id, module_id ORDER BY item_complete_ts,item_start_ts ) AS item_row_rank
+	    FROM course_activity a
+	    WHERE item_complete_ts IS NOT null 
+	    ORDER BY user_id,course_id,module_order,module_id,item_start_ts
+	) x
+	WHERE item_row_rank = 4    
+	ORDER BY item_complete_ts,module_order
+ )  
+ /* keep as a check to validate test case */
+-- SELECT * FROM users_with_completed_modules WHERE user_id = 18256 AND module_id = 'JpGj'
+ , users_with_completed_courses AS (
+	 SELECT user_id,course_id, item_complete_ts 
+	 FROM (
+		 SELECT *
+		 /* ranking completed modules to get all details related to the module timestamp that means course is complete */
+		 ,ROW_NUMBER() OVER (PARTITION BY user_id,course_id ORDER BY item_complete_ts,module_order asc) AS module_row_rank
+		 FROM user_modules_completed
+	) x 
+	WHERE module_row_rank = 4   
+ ) /* keep as a check to validate test case */
+-- 	SELECT * FROM  users_with_completed_courses WHERE user_id = 304134
+,weekly_course_passed AS (
+ 	SELECT
+		tp.end_date,a.course_id,count(DISTINCT a.user_id) weekly_passed
+	FROM time_period tp
+    JOIN course_activity a ON a.item_start_ts::date BETWEEN tp.current_period_start_date AND tp.current_period_end_date
+    /* course must have been past within the current period */
+    JOIN users_with_completed_courses uc 
+    	ON uc.user_id = a.user_id 
+    	AND uc.course_id = a.course_id 
+    	AND uc.item_complete_ts::date BETWEEN tp.current_period_start_date AND tp.current_period_end_date
+	GROUP BY tp.end_date,a.course_id
+)
+ , users_with_completed_modules AS (
+	 SELECT user_id,course_id, module_id,module_complete_ts 
+	 FROM (
+		 SELECT *
+		 /* ranking completed modules to get all details related to the module timestamp that means course is complete */
+		 ,ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY module_complete_ts,module_order asc) AS module_row_rank
+		 FROM user_modules_completed
+	) x 
+	WHERE module_row_rank = 1   
+)
+, weekly_course_progression AS (
+ /* keep as a check to validate test case */
+-- SELECT * FROM users_with_completed_modules WHERE course_id = '7A1yFTaREeWWBQrVFXqd'
+SELECT 
+	tp.end_date,a.course_id,count(DISTINCT a.user_id) weekly_progression
+FROM time_period tp
+JOIN course_activity a ON a.item_start_ts::date BETWEEN tp.current_period_start_date AND tp.current_period_end_date
+JOIN users_with_completed_modules ucm
+	ON ucm.user_id = a.user_id 
+	/* module has to be completed before the first day of the current period to be the past */
+	AND ucm.module_complete_ts < tp.current_period_start_date
+	AND ucm.module_id <> a.module_id
+GROUP BY tp.end_date,a.course_id
+)
+SELECT 
+	wca.*
+    ,COALESCE(wcr.weekly_retention,0) weekly_retention
+    ,COALESCE(wcg.weekly_progression,0) weekly_progression
+    ,COALESCE(wcp.weekly_passed,0) weekly_passed
+/* weekly_course_actives has each day of 2016 with as many courses as their are course_id values */
+FROM weekly_course_actives wca
+LEFT JOIN weekly_course_retention wcr 
+	ON wcr.end_date = wca.end_date
+	AND wcr.course_id = wca.course_id
+LEFT JOIN weekly_course_passed wcp 
+	ON wcp.end_date = wca.end_date
+	AND wcp.course_id = wca.course_id
+LEFT JOIN weekly_course_progression wcg 
+	ON wcg.end_date = wca.end_date
+	AND wcg.course_id = wca.course_id
+/* keep as a check to validate test case */
+--WHERE wca.end_date::date = '2016-04-01' OR wca.end_date::date = '2016-08-08'
