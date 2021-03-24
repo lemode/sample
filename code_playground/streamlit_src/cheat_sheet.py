@@ -80,5 +80,7 @@ def write():
         > **Build an image from a Dockerfile in a Git Hub repo** `docker build . -t <name:tag>`  
         > **Run docker file to set up container** `docker run - p <local machine port>:<container port> <name:tag>`  
         > **List containers using docker imaage** `docker container ls <name:tag>`  
+        > **List all running docker containers** `docker ps -a>`  
+        > **Copy files and directory from docker container to local machine root file/directory called __.__ (run from local machine)** `docker cp <container id>:/<container file/directory> .`
     """
     )
