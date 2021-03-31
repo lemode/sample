@@ -17,7 +17,7 @@ Create psql for windows (add to environment variables): https://stackoverflow.co
 
 Google App Scripts https://www.labnol.org/internet/google-apps-script-developers/32305/
 
-
+Cron Job Timing: https://crontab.guru/#*/45_*_*_*_*
 
 Coverage and Black Library Usage
 
