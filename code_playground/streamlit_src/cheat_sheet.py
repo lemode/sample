@@ -55,12 +55,21 @@ def write():
         """
     )
 
-    col2.subheader("Posgres PSQL Powershell")
+    col2.subheader("Postgres PSQL Powershell")
     col2.markdown(
         """
         > **Run psql command line script** `psql -h hostname -d database_name -U user_name -p 5432 -a -q -f filepath`  
         """
     )
+
+    col2.subheader("SSH")
+    col2.markdown(
+        """
+        > **Generate SSH directory and config file for the first time** [`ssh-keygen`](https://superuser.com/questions/1256286/missing-ssh-folder-in-macos-high-sierra/1256291)  
+        > **Copy contents of public ssh key**[`pbcopy < ~/.ssh/id_rsa.pub`](https://stackoverflow.com/questions/3828164/how-do-i-access-my-ssh-public-key)
+        """
+    )
+    
 
     col2.subheader("Python Environment Setup")
     col2.markdown(
