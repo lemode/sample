@@ -19,6 +19,18 @@ Google App Scripts https://www.labnol.org/internet/google-apps-script-developers
 
 Cron Job Timing: https://crontab.guru/#*/45_*_*_*_*
 
+gw2765 benq canada
+
+__Chrome Cast__
+https://www.youtube.com/watch?v=ZiydI0358s4
+
+__Python__
+Add Value from Previous Row: https://stackoverflow.com/questions/19076539/python-pandas-dataframe-add-previous-row-values
+
+__Mortgage Calculator__
+https://www.indeed.com/career-advice/career-development/interest-compounded-semiannually
+https://taiheicorp.com/data-science/calculate-loan-payments-using-while-loops-in-python
+
 Coverage and Black Library Usage
 
 coverage - https://pypi.org/project/coverage/
