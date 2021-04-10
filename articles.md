@@ -10,16 +10,14 @@ https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-F
 Download and Setup Postgres
 Download Postgres: https://www.postgresql.org/download/
 Change postgres password: https://www.postgresqltutorial.com/postgresql-reset-password/
-Create user no password: https://www.postgresql.org/docs/8.0/sql-createuser.html 
+Create user no password: https://www.postgresql.org/docs/8.0/sql-createuser.html
 ```CREATE <user>; GRANT ALL PRIVILEGES ON DATABASE lemode to <user>;```
-Create psql for windows (add to environment variables): https://stackoverflow.com/questions/30401460/postgres-psql-not-recognized-as-an-internal-or-external-command 
+Create psql for windows (add to environment variables): https://stackoverflow.com/questions/30401460/postgres-psql-not-recognized-as-an-internal-or-external-command
 
 
 Google App Scripts https://www.labnol.org/internet/google-apps-script-developers/32305/
 
 Cron Job Timing: https://crontab.guru/#*/45_*_*_*_*
-
-gw2765 benq canada
 
 __Chrome Cast__
 https://www.youtube.com/watch?v=ZiydI0358s4
@@ -45,8 +43,8 @@ Formatters:
 black https://pypi.org/project/black/
 isort https://pypi.org/project/isort/
 You can setup vscode to run these on save (my settings file below), but you can also just call them from a command line:
-black codex/data_objects/travel_advisory_score.py 
-isort codex/data_objects/travel_advisory_score.py 
+black codex/data_objects/travel_advisory_score.py
+isort codex/data_objects/travel_advisory_score.py
 In general I run black before isort
 Linter:
 There are lots, you can choose whichever one you like, I use pylint and it's not annoying which is the worst thing about linters

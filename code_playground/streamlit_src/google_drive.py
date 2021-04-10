@@ -2,6 +2,7 @@ import pandas as pd
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
+
 def google_drive_authenticate_and_upload(
     dataframe, target_filename, parent_folder_id, shared_drive_id=None
 ):
@@ -42,7 +43,9 @@ def google_drive_authenticate_and_upload(
     gfile.Upload(param={"supportsTeamDrives": True})
 
 
-def google_drive_list_files(parent_folder_id, shared_drive_id=None, include_trash=False):
+def google_drive_list_files(
+    parent_folder_id, shared_drive_id=None, include_trash=False
+):
     # Authenticate and create the PyDrive client.
     gauth = GoogleAuth()
     gauth.LocalWebserverAuth()
@@ -88,6 +91,4 @@ def google_drive_delete_file(file_name):
 #     "0AJtUdmSRqmfpUk9PVA",
 # )
 
-google_drive_list_files(
-    "1-M86F6y5hm4J9zQNgIBdbOKND3dgKZ7V",
-    "0AJtUdmSRqmfpUk9PVA")
+google_drive_list_files("1-M86F6y5hm4J9zQNgIBdbOKND3dgKZ7V", "0AJtUdmSRqmfpUk9PVA")
