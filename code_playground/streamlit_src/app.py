@@ -2,12 +2,12 @@ import streamlit as st
 
 import webpage
 
-import app_home
+import home
 import cheat_sheet
 
 
 PAGES = {
-    "Home": app_home,
+    "Home": home,
     "Quick Commands": cheat_sheet,
 }
 
