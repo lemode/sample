@@ -35,6 +35,7 @@ def write():
 > Get list of active tasks `tasklist`
 > Kill by forcefully terminating process using pid `taskkill /PID <pid> /F`
 > Keep bat file open after script runs `pause`
+> Copy recursively one folder to another location `cp -r ./etl .fin/etl`
 """
     )
 
