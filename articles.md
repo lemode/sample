@@ -17,6 +17,8 @@ Create psql for windows (add to environment variables): https://stackoverflow.co
 
 Google App Scripts https://www.labnol.org/internet/google-apps-script-developers/32305/
 
+Adaptor Pattern https://bocoup.com/blog/adapter-pattern-a-must-for-vendor-service-integrations
+
 Cron Job Timing: https://crontab.guru/#*/45_*_*_*_*
 
 __Chrome Cast__
