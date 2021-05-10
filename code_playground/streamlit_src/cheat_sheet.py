@@ -54,6 +54,11 @@ def write():
     ##### [Copy contents of public ssh key](https://stackoverflow.com/questions/3828164/how-do-i-access-my-ssh-public-key)`pbcopy < ~/.ssh/id_rsa.pub`
     """
     )
+    
+    col2.subheader("Python")
+    col2.markdown(
+        "##### [Python Cheat Sheet commands](https://github.com/gto76/python-cheatsheet)"
+    )
 
     col2.subheader("Python Environment Setup")
     col2.markdown(
