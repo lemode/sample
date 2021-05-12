@@ -1,35 +1,33 @@
-Pandas Pivot Table with Subtotals
-https://stackoverflow.com/questions/53266032/adding-a-grand-total-to-a-pandas-pivot-table
+#### Python & Pandas. 
+Pandas pivot table with subtotals: https://stackoverflow.com/questions/53266032/adding-a-grand-total-to-a-pandas-pivot-table  
+Slow running queries: https://tophat.atlassian.net/wiki/spaces/TOP/pages/1719697419/How+to+Debug+Slow+SQL+Queries  
+Cron Job Timing: https://crontab.guru/#*/45_*_*_*_*
+Add Value from Previous Row: https://stackoverflow.com/questions/19076539/python-pandas-dataframe-add-previous-row-values
+Adaptor Pattern: https://bocoup.com/blog/adapter-pattern-a-must-for-vendor-service-integrations
+Mocking api calls: https://auth0.com/blog/mocking-api-calls-in-python/  
 
-SQL Analytics Windows Functions
-https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions001.htm
+#### SQL. 
+SQL Analytics Windows Functions: https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions001.htm
 
-Markdown
-https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-
+#### Markdown. 
+Syntax: https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-  
 
-Download and Setup Postgres
-Download Postgres: https://www.postgresql.org/download/
-Change postgres password: https://www.postgresqltutorial.com/postgresql-reset-password/
-Create user no password: https://www.postgresql.org/docs/8.0/sql-createuser.html
+#### Postgres Setup. 
+Download Postgres: https://www.postgresql.org/download/  
+Change postgres password: https://www.postgresqltutorial.com/postgresql-reset-password/  
+Create user no password: https://www.postgresql.org/docs/8.0/sql-createuser.html. 
 ```CREATE <user>; GRANT ALL PRIVILEGES ON DATABASE lemode to <user>;```
 Create psql for windows (add to environment variables): https://stackoverflow.com/questions/30401460/postgres-psql-not-recognized-as-an-internal-or-external-command
 
+#### Google App Scripts. 
+https://www.labnol.org/internet/google-apps-script-developers/32305/. 
 
-Google App Scripts https://www.labnol.org/internet/google-apps-script-developers/32305/
+__Chrome Cast__. 
+https://www.youtube.com/watch?v=ZiydI0358s4. 
 
-Adaptor Pattern https://bocoup.com/blog/adapter-pattern-a-must-for-vendor-service-integrations
-
-Cron Job Timing: https://crontab.guru/#*/45_*_*_*_*
-
-__Chrome Cast__
-https://www.youtube.com/watch?v=ZiydI0358s4
-
-__Python__
-Add Value from Previous Row: https://stackoverflow.com/questions/19076539/python-pandas-dataframe-add-previous-row-values
-
-__Mortgage Calculator__
-https://www.indeed.com/career-advice/career-development/interest-compounded-semiannually
-https://taiheicorp.com/data-science/calculate-loan-payments-using-while-loops-in-python
+__Mortgage Calculator__.    
+https://www.indeed.com/career-advice/career-development/interest-compounded-semiannually. 
+https://taiheicorp.com/data-science/calculate-loan-payments-using-while-loops-in-python. 
 
 Coverage and Black Library Usage
 
