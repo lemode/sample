@@ -7,6 +7,9 @@ Adaptor Pattern: https://bocoup.com/blog/adapter-pattern-a-must-for-vendor-servi
 Mocking api calls: https://auth0.com/blog/mocking-api-calls-in-python/ <br>
 Mocking api calls with class attributes + full cheat sheet: https://medium.com/@yeraydiazdiaz/what-the-mock-cheatsheet-mocking-in-python-6a71db997832 <br>
 
+#### Timestamp Conversion
+[Convert numeric timestamp using Epoch Converter](https://www.epochconverter.com/)
+
 #### SQL
 SQL Analytics Windows Functions: https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions001.htm <br>
 
