@@ -112,3 +112,13 @@ def write():
 > Clear variable with no user confirmation `%reset -f`
 """
     )
+    
+
+    col2.subheader("Typescript")
+    col2.code(
+        """
+> Run typescript test using jest `npx jest`
+> Convert typescript files to javascript 'gulp` or `tsc -w`
+"""
+    )    
+    
