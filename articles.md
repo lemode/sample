@@ -33,31 +33,39 @@ https://www.youtube.com/watch?v=ZiydI0358s4 <br>
 https://www.indeed.com/career-advice/career-development/interest-compounded-semiannually <br>
 https://taiheicorp.com/data-science/calculate-loan-payments-using-while-loops-in-python <br>
 
-Coverage and Black Library Usage
-
-coverage - https://pypi.org/project/coverage/
-Run all tests in a project:
-coverage run --source /Users/tross/repos/codex-local/codex -m unittest discover
-Run all tests in a specific test suite file
-coverage run --source /Users/tross/repos/codex-local/codex -m unittest codex.module.submodule.tests.test_file
-Run a specific test case
-coverage run --source /Users/tross/repos/codex-local/codex -m unittest codex.module.submodule.tests.test_file.TestClass.test_case_method
+#### Coverage and Black Library Usage<br>
+<br>
+coverage - https://pypi.org/project/coverage/<br>
+Run all tests in a project:<br>
+coverage run --source /Users/tross/repos/codex-local/codex -m unittest discover<br>
+Run all tests in a specific test suite file<br>
+coverage run --source /Users/tross/repos/codex-local/codex -m unittest codex.module.submodule.tests.test_file OR coverage run  -m unittest discover<br> common/thm_billings/tests/
+Run a specific test case<br>
+coverage run --source /Users/tross/repos/codex-local/codex -m unittest codex.module.submodule.tests.test_file.TestClass.test_case_method<br>
 The --source is so it doesn't look for tests on all the modules in the project, like pandas, without this out coverage would look like 2%, but you'll need to change that location
-Formatters:
-black https://pypi.org/project/black/
-isort https://pypi.org/project/isort/
-You can setup vscode to run these on save (my settings file below), but you can also just call them from a command line:
-black codex/data_objects/travel_advisory_score.py
-isort codex/data_objects/travel_advisory_score.py
-In general I run black before isort
-Linter:
-There are lots, you can choose whichever one you like, I use pylint and it's not annoying which is the worst thing about linters
-https://pypi.org/project/pylint/
-Interactive shell
-ipython https://pypi.org/project/ipython/
-You might already have it via Jupyter, but it's good to know how to use it from a terminal, look up the magic methods for ipython when you have time, there's stuff like save all lines to a python script
-pdb docs https://docs.python.org/3.6/library/pdb.html
-My project vscode settings
+<br>
+<br>
+Formatters: <br>
+black https://pypi.org/project/black/<br>
+isort https://pypi.org/project/isort/<br>
+You can setup vscode to run these on save (my settings file below), but you can also just call them from a command line:<br>
+black codex/data_objects/travel_advisory_score.py<br>
+isort codex/data_objects/travel_advisory_score.py<br>
+In general I run black before isort<br>
+
+<br><br>
+Linter:<br>
+There are lots, you can choose whichever one you like, I use pylint and it's not annoying which is the worst thing about linters<br>
+https://pypi.org/project/pylint/<br>
+<br>
+<br>
+Interactive shell<br>
+ipython https://pypi.org/project/ipython/<br>
+You might already have it via Jupyter, but it's good to know how to use it from a terminal, look up the magic methods for ipython when you have time, there's stuff like save all lines to a python script<br>
+pdb docs https://docs.python.org/3.6/library/pdb.html<br>
+<br>
+My project vscode settings<br>
+``` 
 {
     "python.pythonPath": "/Users/tross/repos/codex-local/bin/python",
     "python.formatting.provider": "black",
@@ -85,4 +93,5 @@ force_grid_wrap = 0
 use_parentheses = True
 ensure_newline_before_comments = True
 line_length = 88
+```
 That should stop them from fighting with each other
