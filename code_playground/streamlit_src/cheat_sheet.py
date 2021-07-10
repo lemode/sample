@@ -120,5 +120,12 @@ def write():
 > Run typescript test using jest `npx jest`
 > Convert typescript files to javascript 'gulp` or `tsc -w`
 """
-    )    
+    )
+        col2.markdown(
+        """
+    ##### [Remove nvm files](https://stackoverflow.com/questions/47240567/uninstalling-the-currently-active-version-of-node-js-with-nvm)`rm -rf ~/.nvm`
+   """
+    )
     
+    
+   
