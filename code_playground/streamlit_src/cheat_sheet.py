@@ -112,17 +112,19 @@ def write():
 > Clear variable with no user confirmation `%reset -f`
 """
     )
-    
+   
 
     col2.subheader("Typescript")
     col2.code(
         """
 > Run typescript test using jest `npx jest`
 > Convert typescript files to javascript 'gulp` or `tsc -w`
+> Run javascript file linda.js `node linda.js`
 """
     )
         col2.markdown(
         """
+    ##### [Node JS Package Manager Libraries](https://www.npmjs.com/package/netsuite-fasttrack-toolkit-ss2/v/6.2.0)
     ##### [Remove nvm files](https://stackoverflow.com/questions/47240567/uninstalling-the-currently-active-version-of-node-js-with-nvm)`rm -rf ~/.nvm`
    """
     )
